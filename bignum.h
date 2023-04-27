@@ -125,6 +125,19 @@ static int bn_resize(bn *src, size_t size)
 }
 
 /*
+ * copy the value from src to dest
+ * return 0 on success, -1 on error
+ */
+int bn_cpy(bn *dest, bn *src)
+{
+    if (bn_resize(dest, src->size) < 0)
+        return -1;
+    dest->sign = src->sign;
+    memcpy(dest->number, src->number, src->size * sizeof(int));
+    return 0;
+}
+
+/*
  * output bn to decimal string
  * Note: the returned string should be freed with kfree()
  */
