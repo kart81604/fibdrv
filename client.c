@@ -43,10 +43,10 @@ int main()
         long long start = get_nanotime();
         sz = read(fd, buf, 1);
         long long utime = get_nanotime() - start;
-        printf("Reading from " FIB_DEV
+        /*printf("Reading from " FIB_DEV
                " at offset %d, returned the sequence "
                "%s.\n",
-               i, buf);
+               i, buf);*/
         printf("%d %llu\n", i, sz);
         fprintf(data, "%d %lld %lld %lld\n", i, sz, utime, utime - sz);
     }
